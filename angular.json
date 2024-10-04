@@ -29,11 +29,13 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
             ],
+            
             "scripts": []
           },
           "configurations": {
@@ -98,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "de514414-0ad4-43de-aa55-9f2580a9ad08"
   }
 }

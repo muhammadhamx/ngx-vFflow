@@ -1,0 +1,148 @@
+<div class="drawer lg:drawer-open">
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content  ">
+        <!-- Input Model -->
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle" [open]="inputModalOpen">
+            <div class="modal-box">
+                <h3 class="text-lg font-bold"></h3>
+                <p class="py-4">Enter the name of card</p>
+                <input type="text" placeholder="Name ..." class="input input-bordered w-full max-w-xs"
+                    [(ngModel)]="cardName" />
+                <div class="modal-action">
+                    <form (ngSubmit)="submitForm()">
+                        <button type="button" class="btn btn-error" (click)="closeModal()">Close</button>
+                        <button type="submit" class="btn btn-outline ml-6">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+        <!-- Error Model -->
+        <dialog id="my_modal_2" class="modal" [open]="errorModalOpen">
+            <div class="modal-box">
+                <h3 class="text-lg font-bold"></h3>
+                <p class="py-4">The Name feild is empty</p>
+            </div>
+            <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+            </form>
+        </dialog>
+        
+
+
+        <vflow dndDropzone view="auto" [nodes]="nodes" [edges]="edges" (onConnect)="connectionSetting($event)"
+            (dndDrop)="createNode($event)">
+            <!-- Nodes -->
+            <ng-template nodeHtml let-ctx>
+                <div class="custom-node" (click)="clickedNode(ctx.node);drawer.toggle()"
+                    [class.custom-node_selected]="ctx.selected()">
+                    <div class="node-view w-80">
+                        @if (ctx.node.data.type === 'client') {
+                            <img src="../../assets/client.png" alt="">
+                        } @else if (ctx.node.data.type === 'project') {
+                            <img src="../../assets/project_5956494.png" alt="">
+                        } @else if (ctx.node.data.type === 'payment') {
+                            <img src="../../assets/payment2.png" alt="">
+                        } @else if (ctx.node.data.type === 'expense') {
+                            <img src="../../assets/expense2.png" alt="">
+                        } @else if (ctx.node.data.type === 'employee') {
+                            <img src="../../assets/employeee2.png" alt="">
+                        } @else if (ctx.node.data.type === 'department') {
+                            <img src="../../assets/department2.png" alt="">
+                        } @else if (ctx.node.data.type === 'task') {
+                            <img src="../../assets/Task.png" alt="">
+                        } @else if (ctx.node.data.type === 'purchaseOrder') {
+                            <img src="../../assets/purchase order.png" alt="">
+                        } @else if (ctx.node.data.type === 'report') {
+                            <img src="../../assets/report2.png" alt="">
+                        }
+                        <span>{{ctx.node.data.text}}</span>
+                        <button class="btn btn-error btn-sm ml-4" (click)="deleteNode(ctx.node.id)">Delete</button>
+                    </div>
+                    <handle type="source" position="right" />
+                    <handle type="target" position="left" />
+                </div>
+            </ng-template>
+
+            <ng-template edge let-ctx>
+                <svg:path selectable [attr.d]="ctx.path()" [attr.stroke]="ctx.selected() ? '#0f4c75' : '#bbe1fa'"
+                    fill="none" stroke-width="2" />
+            </ng-template>
+        </vflow>
+
+
+    </div>
+    <!-- Sidebar -->
+    <div class="drawer-side">
+        <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+        <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+            <h1 class="text-xl font-bold my-8">Drag and Drop Cards</h1>
+            <!-- Dragable Cards -->
+            <div class="sidebar">
+                <div dndDraggable (dndStart)="onDrag($event)" class="custom-node custom-node_draggable">
+                    <div class="node-view">
+                        <img [draggable]="false" dndDisableDrag src="../../assets/client.png" alt="">
+                        <span>Client </span>
+                    </div>
+                </div>
+
+                <div dndDraggable (dndStart)="onDrag($event)" class="custom-node custom-node_draggable">
+                    <div class="node-view">
+                        <img [draggable]="false" src="../../assets/project_5956494.png" alt="">
+                        <span>Project </span>
+                    </div>
+                </div>
+
+                <div dndDraggable (dndStart)="onDrag($event)" class="custom-node custom-node_draggable">
+                    <div class="node-view">
+                        <img [draggable]="false" src="../../assets/payment2.png" alt="">
+                        <span>Payment </span>
+                    </div>
+                </div>
+
+                <div dndDraggable (dndStart)="onDrag($event)" class="custom-node custom-node_draggable">
+                    <div class="node-view">
+                        <img [draggable]="false" src="../../assets/expense2.png" alt="">
+                        <span>Expense </span>
+                    </div>
+                </div>
+
+                <div dndDraggable (dndStart)="onDrag($event)" class="custom-node custom-node_draggable">
+                    <div class="node-view">
+                        <img [draggable]="false" src="../../assets/employeee2.png" alt="">
+                        <span>Employee </span>
+                    </div>
+                </div>
+
+                <div dndDraggable (dndStart)="onDrag($event)" class="custom-node custom-node_draggable">
+                    <div class="node-view">
+                        <img [draggable]="false" src="../../assets/department2.png" alt="">
+                        <span>Department </span>
+                    </div>
+                </div>
+                
+                <div dndDraggable (dndStart)="onDrag($event)" class="custom-node custom-node_draggable">
+                    <div class="node-view">
+                        <img [draggable]="false" src="../../assets/Task.png" alt="">
+                        <span>Task </span>
+                    </div>
+                </div>
+                
+                <div dndDraggable (dndStart)="onDrag($event)" class="custom-node custom-node_draggable">
+                    <div class="node-view">
+                        <img [draggable]="false" src="../../assets/purchase order.png" alt="">
+                        <span>Purchase Order </span>
+                    </div>
+                </div>
+                
+                <div dndDraggable (dndStart)="onDrag($event)" class="custom-node custom-node_draggable">
+                    <div class="node-view">
+                        <img [draggable]="false" src="../../assets/report2.png" alt="">
+                        <span>Report </span>
+                    </div>
+                </div>
+                
+            </div>
+        </ul>
+    </div>
+</div>
+
