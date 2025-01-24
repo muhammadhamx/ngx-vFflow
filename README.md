@@ -110,8 +110,8 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 For any questions or suggestions, feel free to reach out:
-- **Email**: [muhammadhamzasajid6@gmail.com ]
-- **GitHub**: [muhammadhamx]
+- **Email**: muhammadhamzasajid6@gmail.com 
+- **GitHub**: muhammadhamx
 
 ---
 Thank you for checking out this project!
