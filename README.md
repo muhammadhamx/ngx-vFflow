@@ -90,6 +90,9 @@ src/
 - **typescript**: `~5.5.2`
 - **karma**: `~6.4.0`
 
+## Demo
+Check out the live demo of this project here: [Drag-and-Drop Node System](https://ngx-vflow.vercel.app)
+
 ## Contributing
 Contributions are welcome! To contribute:
 
@@ -107,8 +110,8 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 For any questions or suggestions, feel free to reach out:
-- **Email**: [your.email@example.com]
-- **GitHub**: [YourGitHubProfile]
+- **Email**: [muhammadhamzasajid6@gmail.com ]
+- **GitHub**: [muhammadhamx]
 
 ---
 Thank you for checking out this project!
